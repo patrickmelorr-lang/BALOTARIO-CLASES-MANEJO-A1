@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Simulador de examen de manejo A1 (Perú) — balotario de 200 preguntas con retroalimentación." />
+    <title>Examen de Manejo A1 — Balotario 200 preguntas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <main class="container">
+        <!-- Encabezado -->
+        <header class="header">
+            <div class="header-titles">
+                <h1>🚗 Examen A1</h1>
+                <p class="subtitle">Balotario oficial — 200 preguntas</p>
+            </div>
+            <span class="visitas">
+                <span class="dot"></span>
+                Visitas: <strong id="visitasContador">—</strong>
+            </span>
+        </header>
+
+        <!-- Tablero de estadísticas -->
+        <section class="stats" aria-label="Resultados de la sesión">
+            <div class="stat-card ok">
+                <div class="value" id="statAciertos">0</div>
+                <div class="label">Correctas</div>
+            </div>
+            <div class="stat-card err">
+                <div class="value" id="statErrores">0</div>
+                <div class="label">Incorrectas</div>
+            </div>
+            <div class="stat-card acc">
+                <div class="value" id="statPrecision">—</div>
+                <div class="label">Precisión</div>
+            </div>
+        </section>
+
+        <!-- Progreso -->
+        <div class="progress"><div class="progress-bar" id="progresoBar"></div></div>
+        <div class="q-header">
+            <span id="preguntaNumero">Pregunta 0 de 200</span>
+            <span class="estado" id="estadoRespuesta">Sin responder</span>
+        </div>
+
+        <!-- Pregunta actual -->
+        <section id="preguntaContainer">
+            <div class="pregunta-texto" id="preguntaTexto">Cargando pregunta…</div>
+            <img id="preguntaImagen" class="pregunta-imagen oculto" alt="" onerror="this.classList.add('oculto')" />
+            <div class="opciones" id="opcionesContainer"></div>
+        </section>
+
+        <!-- Retroalimentación -->
+        <div class="feedback" id="feedback">
+            <strong class="titulo" id="feedbackTitulo"></strong>
+            <div class="argumento" id="feedbackArgumento"></div>
+        </div>
+
+        <!-- Botonera -->
+        <div class="botonera" id="botonera">
+            <div class="izq">
+                <button class="btn btn-ghost" id="btnReiniciar" title="Reiniciar el marcador de la sesión">Reiniciar marcador</button>
+                <button class="btn btn-ghost" id="btnMostrarTodas">Ver todas</button>
+            </div>
+            <div class="der">
+                <button class="btn btn-primary" id="btnSiguiente" disabled>Siguiente (k)</button>
+            </div>
+        </div>
+
+        <!-- Modo "ver todas" (oculto por defecto) -->
+        <section class="ver-todas oculto" id="modoVisualizacion">
+            <h2>Todas las preguntas</h2>
+            <p class="hint">Listado completo con la respuesta correcta y su justificación.</p>
+            <div id="listaVisualizacion"></div>
+            <button class="btn btn-ghost" id="btnOcultarTodas">← Volver al examen</button>
+        </section>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
